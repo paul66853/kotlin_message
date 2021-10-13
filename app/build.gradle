@@ -47,6 +47,6 @@ dependencies {
     //使用storage
     implementation 'com.google.firebase:firebase-storage-ktx'
     //使用資料庫
-    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx'
 }
 apply plugin: 'com.google.gms.google-services'

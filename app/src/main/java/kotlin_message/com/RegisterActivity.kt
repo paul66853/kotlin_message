@@ -12,7 +12,11 @@ import android.widget.Toast
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +87,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (result != null) {
                     val user = result.user   // Kotlin says user is of type "FirebaseUser?"
                     if (user != null) {
-                        Log.d("Main", "Successfully created user with uid: ${user.uid}")
+                        Log.d("RegisterActivity", "Successfully created user with uid: ${user.uid}")
 
                         //將圖片上載到FIREBASE
                         uploadImageToFirebaseStorage()
@@ -92,13 +96,35 @@ class RegisterActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 if (it.message != null) {
-                    Log.d("Main","Fail to create user: ${it.message}")
+                    Log.d("RegisterActivity","Fail to create user: ${it.message}")
                     Toast.makeText(this,"註冊失敗 : ${it.message}",Toast.LENGTH_SHORT).show()
                 }
             }
     }
     private fun uploadImageToFirebaseStorage(){
+        if(selectedPhotoUri == null) return
 
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/image/$filename")
+
+        //不清楚內部運作!!!!!!!!!!!!!
+        ref.putFile(selectedPhotoUri!!)
+            .addOnSuccessListener {
+                Log.d("RegisterActivity","Successfully uploaded image: ${it.metadata?.path}")
+
+                //顯示圖片下載網址
+                ref.downloadUrl.addOnSuccessListener {
+                    Log.d("RegisterActivity","File Location: $it")
+
+                    saveUserToFirebaseDatabase()
+                }
+            }
     }
 
+    private fun  saveUserToFirebaseDatabase(){
+        val uid = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+
+        ref.setValue()
+    }
 }
