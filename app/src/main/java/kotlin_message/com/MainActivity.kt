@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener {
                 if (it.message != null) {
                     Log.d("Main","Fail to create user: ${it.message}")
+                    Toast.makeText(this,"註冊失敗 : ${it.message}",Toast.LENGTH_SHORT).show()
                 }
             }
     }
