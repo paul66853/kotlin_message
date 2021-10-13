@@ -44,5 +44,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.firebase:firebase-auth-ktx'
+    //使用storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    //使用資料庫
+    implementation 'com.google.firebase:firebase-storage-ktx'
 }
 apply plugin: 'com.google.gms.google-services'
