@@ -32,6 +32,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    // IMPORTANT!  Enables kotlin synthetic view properties.
+    // See: https://github.com/Kotlin/KEEP/blob/master/proposals/android-extensions-entity-caching.md
+
+    //此為新增Groupie dependence!!!!!!!!!!!!!
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -52,5 +59,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     //使用圓形按鈕
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //groupie使用
+    implementation 'com.github.lisawray.groupie:groupie:2.10.0'
+    //picasso使用
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 apply plugin: 'com.google.gms.google-services'

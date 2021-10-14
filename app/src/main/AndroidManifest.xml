@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlin_message">
+<!--        //不懂設計新增訊息頁面帶返回按鍵-->
         <activity
             android:name=".NewMessageActivity"
             android:exported="true">
-            //不懂->設計新增訊息頁面帶返回按鍵
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LatestMessagesActivity"/>
         </activity>
