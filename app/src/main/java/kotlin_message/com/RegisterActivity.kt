@@ -134,7 +134,10 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d("ResisterActivity","Finally we saved the user to Firebase Database")
 
-
+                //成功切換登入後
+                val intent = Intent(this,LatestMessagesActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
             }
             .addOnFailureListener {
                 Log.d("ResisterActivity","Faled to set value to database: ${it.message}")
