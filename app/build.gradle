@@ -13,6 +13,8 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
+        //超過限制
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,5 +50,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
     //使用資料庫
     implementation 'com.google.firebase:firebase-database-ktx'
+    //使用圓形按鈕
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
 apply plugin: 'com.google.gms.google-services'

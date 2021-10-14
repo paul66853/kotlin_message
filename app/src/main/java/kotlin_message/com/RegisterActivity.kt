@@ -9,11 +9,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -57,9 +54,12 @@ class RegisterActivity : AppCompatActivity() {
 
             val  bitmap = MediaStore.Images.Media.getBitmap(contentResolver,selectedPhotoUri)
 
+            selectphoto_imageview_register.setImageBitmap(bitmap)
+            //被遮住了，使用下面這個
+            selectphoto_button_register.alpha = 0f
             //UI顯示照片在按鈕中
-            val  bitmapDrawable = BitmapDrawable(bitmap)
-            selectphoto_button_register.setBackgroundDrawable(bitmapDrawable)
+//            val  bitmapDrawable = BitmapDrawable(bitmap)
+//            selectphoto_button_register.setBackgroundDrawable(bitmapDrawable)
         }
     }
     //FUN建立
@@ -116,15 +116,29 @@ class RegisterActivity : AppCompatActivity() {
                 ref.downloadUrl.addOnSuccessListener {
                     Log.d("RegisterActivity","File Location: $it")
 
-                    saveUserToFirebaseDatabase()
+                    saveUserToFirebaseDatabase(it.toString())
                 }
             }
+            .addOnFailureListener{
+                //do some logging here
+                Log.d("RegisterActivity","Faled to upload image to storage: ${it.message}")
+            }
     }
-
-    private fun  saveUserToFirebaseDatabase(){
-        val uid = FirebaseAuth.getInstance().uid
+    private fun  saveUserToFirebaseDatabase(profileImageUrl: String){
+        val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
-        ref.setValue()
+        val user = User(uid,username_edittext_register.text.toString(),profileImageUrl)
+
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d("ResisterActivity","Finally we saved the user to Firebase Database")
+
+
+            }
+            .addOnFailureListener {
+                Log.d("ResisterActivity","Faled to set value to database: ${it.message}")
+            }
     }
 }
+class User(val uid: String, val username: String, val profileImageUrl: String)
