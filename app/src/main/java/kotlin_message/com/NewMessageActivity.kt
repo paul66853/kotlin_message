@@ -37,6 +37,11 @@ class NewMessageActivity : AppCompatActivity() {
         fetchUsers()
     }
 
+    //COMPANION 在做甚麼??????
+    companion object{
+        val USER_KEY = "USER_KEY"
+    }
+
     private fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
@@ -55,7 +60,12 @@ class NewMessageActivity : AppCompatActivity() {
                 //觸發ChatLogActivity
                 adapter.setOnItemClickListener { item, view ->
 
+                    val userItem = item as UserItem
+
                     val intent = Intent(view.context,ChatLogActivity::class.java)
+                    intent.putExtra(USER_KEY,userItem.user.username)
+//                    intent.putExtra(USER_KEY,userItem.user)
+
                     startActivity(intent)
                 //直接切回訊息葉面，不回新增訊息葉面
                     finish()
