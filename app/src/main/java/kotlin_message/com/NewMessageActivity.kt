@@ -1,5 +1,6 @@
 package kotlin_message.com
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -50,6 +51,16 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+
+                //觸發ChatLogActivity
+                adapter.setOnItemClickListener { item, view ->
+
+                    val intent = Intent(view.context,ChatLogActivity::class.java)
+                    startActivity(intent)
+                //直接切回訊息葉面，不回新增訊息葉面
+                    finish()
+                }
+
                 recycleview_newmessage.adapter = adapter
             }
 

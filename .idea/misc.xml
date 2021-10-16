@@ -9,12 +9,17 @@
         <entry key="..\:/android studio/kotlin_message/app/src/main/res/drawable/rounded_edittext_register_login.xml" value="0.2111111111111111" />
         <entry key="..\:/android studio/kotlin_message/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/android studio/kotlin_message/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/kotlin_message/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
+        <entry key="..\:/kotlin_message/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26979166666666665" />
         <entry key="..\:/kotlin_message/app/src/main/res/drawable/rounded_button.xml" value="0.14583333333333334" />
+        <entry key="..\:/kotlin_message/app/src/main/res/drawable/rounded_edittext_register_login.xml" value="0.26979166666666665" />
         <entry key="..\:/kotlin_message/app/src/main/res/drawable/rounded_select_photo_button.xml" value="0.11851851851851852" />
-        <entry key="..\:/kotlin_message/app/src/main/res/layout/activity_latest_messages.xml" value="0.1296875" />
+        <entry key="..\:/kotlin_message/app/src/main/res/layout/activity_chat_log.xml" value="0.24954710144927536" />
+        <entry key="..\:/kotlin_message/app/src/main/res/layout/activity_latest_messages.xml" value="0.2" />
         <entry key="..\:/kotlin_message/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/kotlin_message/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/kotlin_message/app/src/main/res/layout/activity_new_message.xml" value="0.264" />
+        <entry key="..\:/kotlin_message/app/src/main/res/layout/chat_from_row.xml" value="0.24954710144927536" />
         <entry key="..\:/kotlin_message/app/src/main/res/layout/user_row_new_message.xml" value="0.264" />
         <entry key="..\:/kotlin_message/app/src/main/res/menu/nav_menu.xml" value="0.25364583333333335" />
       </map>
