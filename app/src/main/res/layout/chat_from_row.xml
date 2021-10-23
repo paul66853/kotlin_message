@@ -8,14 +8,14 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textview_from_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="this is my message"
-        android:maxWidth="300dp"
+        android:maxWidth="260dp"
         android:background="@drawable/rounded_edittext_register_login"
         android:padding="16dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
